@@ -1,0 +1,18 @@
+DLGINCLUDE 1 "C:\PROJECTS\OS2\MEMWATCH\MAIN.H"
+
+DLGTEMPLATE 10000 LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Product Information", 10000, 33, 31, 178, 79, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        ICON            ID_APPNAME, ID_APPNAME, 3, 61, 21, 16, WS_GROUP
+        CTEXT           "Memory Watcher", 101, 33, 66, 91, 8
+        CTEXT           "Copyright (C) 1998 Jostein Ullestad", 102, 3, 40, 
+                        172, 8
+        CTEXT           "e-mail : jostein@powerutilities.no", 103, 3, 28, 
+                        172, 8
+        CTEXT           "URL : www.powerutilities.no", 104, 3, 19, 172, 8
+        DEFPUSHBUTTON   "~OK", 105, 69, 2, 40, 14
+        CTEXT           "Version 1.2.00", 106, 3, 51, 172, 8, DT_VCENTER
+    END
+END

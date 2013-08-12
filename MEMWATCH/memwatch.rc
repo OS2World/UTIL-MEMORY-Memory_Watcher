@@ -1,0 +1,41 @@
+#include <os2.h>
+#include "main.h"
+
+ICON ID_APPNAME MEMWATC.ICO
+STRINGTABLE LOADONCALL MOVEABLE
+BEGIN
+        ID_APPNAME "Memory Watcher"
+END
+
+MENU ID_APPNAME
+{
+   SUBMENU "~File", -1
+   {
+      MENUITEM "E~xit", IDM_EXIT
+   }
+   SUBMENU "~Options", -1
+   {
+      SUBMENU "~Show", -1
+      {
+        MENUITEM "~Grid"                 , IDM_GRID
+        MENUITEM "~Detail"               , IDM_DETAIL            , 0, MIA_CHECKED
+        MENUITEM "Physical ~Memory"      , IDM_PHYSICAL_MEM      , 0, MIA_CHECKED
+        MENUITEM "Physical Memory ~Limit", IDM_PHYSICAL_MEM_LIMIT, 0, MIA_CHECKED
+        MENUITEM "~Short description"    , IDM_SHORTTEXT
+        MENUITEM "~Title bar"            , IDMTITLEBAR           , 0, MIA_CHECKED
+      }
+      SUBMENU "~Refresh rate", -1
+      {
+        MENUITEM "~Fast"       , IDM_FAST
+        MENUITEM "~Normal"     , IDM_NORMAL, 0, MIA_CHECKED
+        MENUITEM "~Slow"       , IDM_SLOW
+        MENUITEM "~Pause"      , IDM_PAUSE
+      }
+   }
+   SUBMENU "~Help", -1
+   {
+      MENUITEM "~About", IDM_ABOUT
+   }
+}
+rcinclude about.dlg
+

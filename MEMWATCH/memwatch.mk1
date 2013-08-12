@@ -1,0 +1,38 @@
+!define BLANK ""
+c:\projects\os2\memwatch\about.obj : c:\projects\os2\common\about.c .AUTODEP&
+END
+ @c:
+ cd c:\projects\os2\memwatch
+ *wcc386 ..\common\about.c -i=E:\WATCOM\h;E:\WATCOM\h\os2 -w4 -e25 -zq -otex&
+an -d1 -5r -bt=os2 -mf
+
+c:\projects\os2\memwatch\main.obj : c:\projects\os2\memwatch\main.c .AUTODEP&
+END
+ @c:
+ cd c:\projects\os2\memwatch
+ *wcc386 main.c -i=E:\WATCOM\h;E:\WATCOM\h\os2 -w4 -e25 -zq -otexan -d1 -5r &
+-bt=os2 -mf
+
+c:\projects\os2\memwatch\memwatch.res : c:\projects\os2\memwatch\memwatch.rc&
+ .AUTODEPEND
+ @c:
+ cd c:\projects\os2\memwatch
+ rc -i $[: -i E:\WATCOM\h -i E:\WATCOM\h\os2 -r memwatch.rc memwatch.res
+
+c:\projects\os2\memwatch\memwatch.exe : c:\projects\os2\memwatch\about.obj c&
+:\projects\os2\memwatch\main.obj c:\projects\os2\memwatch\memwatch.res .AUTO&
+DEPEND
+ @c:
+ cd c:\projects\os2\memwatch
+ @%write memwatch.lk1 FIL about.obj,main.obj
+ @%append memwatch.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b memwatch.imp 
+ @%append memwatch.lk1 LIBR memwatch.imp
+!endif
+ *wlink name memwatch SYS os2v2 pm op m op maxe=25 op q op symf @memwatch.lk&
+1
+!ifneq BLANK "memwatch.res"
+ rc -i $[: -i E:\WATCOM\h -i E:\WATCOM\h\os2 memwatch.res memwatch.exe
+!endif
+
